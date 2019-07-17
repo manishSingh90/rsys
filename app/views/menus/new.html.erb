@@ -1,0 +1,37 @@
+<%= link_to 'Home', welcome_index_path %>
+<h1>New Menu</h1>
+
+<%#= form_with scope: :menu, url: menus_path, local: true do |form| %>
+
+  <%# if @menu.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2>-->
+<!--        <%#= pluralize(@menu.errors.count, "error") %> prohibited-->
+<!--        this menu from being saved:-->
+<!--      </h2>-->
+<!--      <ul>-->
+        <%# @menu.errors.full_messages.each do |msg| %>
+<!--          <li><%#= msg %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+
+
+
+<!--  <p>-->
+<!--    <%#= form.label :menu_name, 'Menu Name' %><br>-->
+    <%#= form.text_field :menu_name %>
+<!--  </p>-->
+<!--  <p>-->
+<!--    <%#= form.label :description %><br>-->
+    <%#= form.text_area :description %>
+<!--  </p>-->
+
+<!--  <p>-->
+    <%#= form.submit %>
+<!--  </p>-->
+<%# end %>
+
+<%= render 'form' %>
+<%= link_to 'All Menus', menus_path %>

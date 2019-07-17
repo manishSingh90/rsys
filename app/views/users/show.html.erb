@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rsys</title>
+</head>
+<p><strong>Profile </strong></p>
+<body>
+
+<% if true %>
+  <ul>
+    <li><%= @user.first_name.capitalize %></li>
+    <li><%= @user.last_name.capitalize %></li>
+    <li><%= @user.email %></li>
+    <li><%= @user.phone_number %></li>
+<!--    <li><%#= current_user.email %></li>-->
+  </ul>
+<% end %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+
+
+<%= yield %>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<%= link_to 'Home', welcome_index_path %>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @menu.menu_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @menu.description %>
+</p>
+<%= link_to 'Update Menu', edit_menu_path(@menu) %>
+<%= link_to 'All Menus', menus_path %>
+
+<h2>Items:</h2>
+<% @menu.items.each do |item| %>
+  <p>
+    <strong>Item Name:</strong>
+    <%= item.item_name %>
+  </p>
+
+  <p>
+    <strong>Item Price:</strong>
+    <%= item.price %>
+  </p>
+<% end %>
+
+
+<h2>Add a Item:</h2>
+<%= form_with(model: [ @menu, @menu.items.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :item_name %><br>
+    <%= form.text_field :item_name %>
+  </p>
+  <p>
+    <%= form.label :price %><br>
+    <%= form.text_field :price %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
