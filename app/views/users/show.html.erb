@@ -5,19 +5,42 @@
 </head>
 <p><strong>Profile </strong></p>
 <body>
+<dl>
+  <dt>Name</dt>
+  <dd><%= @user.full_name.capitalize %></dd>
+  <dt>Date of Birth</dt>
+  <dd><%= @user.dob %></dd>
+  <dt>Gender</dt>
+  <dd><%= @user.gender %></dd>
+  <dt>Email</dt>
+  <dd><%= @user.email %></dd>
+  <dt>Phone Number</dt>
+  <dd><%= @user.phone_number %></dd>
+</dl>
 
-<% if true %>
-  <ul>
-    <li><%= @user.first_name.capitalize %></li>
-    <li><%= @user.last_name.capitalize %></li>
-    <li><%= @user.email %></li>
-    <li><%= @user.phone_number %></li>
-<!--    <li><%#= current_user.email %></li>-->
-  </ul>
+<% if @user.address.present? %>
+  <h3>Address:</h3>
+  <dl>
+    <dt>Address1</dt>
+    <dd><%= @user.address.address1 %></dd>
+    <dt>Address2</dt>
+    <dd><%= @user.address.address2 %></dd>
+    <dt>Country</dt>
+    <dd><%= @user.address.country %></dd>
+    <dt>State</dt>
+    <dd><%= @user.address.state %></dd>
+    <dt>Zip</dt>
+    <dd><%= @user.address.zip %></dd>
+  </dl>
+
+<% else %>
+  <%= link_to 'Add Address', new_user_address_path(@user) %>
 <% end %>
-<%= link_to 'Edit', edit_user_path(@user) %>
+
+<br>
+<%= link_to 'Update Profile', edit_user_path(@user) %>
 
 
-<%= yield %>
+<%#= yield %>
 </body>
 </html>

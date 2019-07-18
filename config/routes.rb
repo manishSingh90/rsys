@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   end
 
   get 'signup'  => 'users#new'
-  resources :users
+  resources :users do
+    resources :addresses
+  end
 
-  get '/login' => 'sessions#new'
-  post 'login' => 'sessions#create'
 
-  delete 'logout' => 'sessions#destroy'
+  # get '/login' => 'sessions#new'
+  # post 'login' => 'sessions#create'
+  #
+  # delete 'logout' => 'sessions#destroy'
 
 
   root 'welcome#index'

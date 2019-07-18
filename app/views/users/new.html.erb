@@ -1,7 +1,5 @@
-<h1>New User:</h1>
+<!--<h1>New User:</h1>-->
 <p>Find me in app/views/users/new.html.erb</p>
-
-
 <div class="login">
   <div class="container">
     <div class="form">
@@ -10,14 +8,51 @@
       <%= render 'form' %>
 
       <%= form_for(@user) do |f| %>
-        <%= f.text_field :first_name, :placeholder => "First name" %>
-        <%= f.text_field :last_name, :placeholder => "Last name" %>
-        <%= f.email_field :email, :placeholder => "Email" %>
-        <%= f.phone_field :phone_number, :placeholder => "Phone number" %>
+        <table>
+          <tbody>
+          <tr>
+            <td> <%= f.label("First Name") %></td>
+            <td> <%= f.label("Last Name") %></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :first_name, :placeholder => "First name" %>  </td>
+            <td><%= f.text_field :last_name, :placeholder => "Last name" %></td>
+          </tr>
+          </tbody>
+
+        </table>
+        <br>
+
+        <%= f.label("Gender:") %>
+        <%= f.radio_button(:gender, "Male") %><%= f.label("Male") %>
+        <%= f.radio_button(:gender, "Female") %><%= f.label("Female") %>
+
+        <br><br>
+
+        <%= f.label("Date of Birth") %>
+        <%= f.date_field :dob, :placeholder => "Date of Birth" %><br>
+
+        <br>
+
+        <%= f.label("Contact Details:") %><br>
+        <table>
+          <tbody>
+          <tr>
+            <td><%= f.label("Email Address") %></td>
+            <td><%= f.label("Mobile Number") %></td>
+          </tr>
+          <tr>
+            <td><%= f.email_field :email, :placeholder => "Email" %></td>
+            <td><%= f.phone_field :phone_number, :placeholder => "Phone number" %></td>
+          </tr>
+          </tbody>
+        </table>
+        <br>
+        <%= f.label("Password") %><br>
         <%= f.password_field :password, :placeholder => "Password" %>
+        <br><br>
         <%= f.submit "Create an account", class: "btn-submit" %>
       <% end %>
-
     </div>
   </div>
 </div>

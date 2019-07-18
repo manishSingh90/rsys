@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_081917) do
+ActiveRecord::Schema.define(version: 2019_07_17_143137) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address1"
+    t.string "address2"
+    t.string "country"
+    t.string "state"
+    t.integer "zip"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "item_name"
@@ -31,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_06_27_081917) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.date "dob"
+    t.string "gender"
     t.string "email"
     t.string "phone_number"
     t.string "password"

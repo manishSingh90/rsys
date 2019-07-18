@@ -1,7 +1,5 @@
-<p>Find me in app/views/users/new.html.erb</p>
-
 <%= form_with(model: @user, local: true) do |form| %>
-  <p>something went wrong <%= @user.inspect %></p>
+<!--  <p>something went wrong <%#= @user.inspect %></p>-->
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2>

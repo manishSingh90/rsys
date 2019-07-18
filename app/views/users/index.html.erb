@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rsys</title>
+</head>
+<p><strong>All User List</strong></p>
+<body>
+  <table border="2", align="center">
+    <thead>
+    <th>Profile Information</th>
+    <th>Address Details</th>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+        <dl>
+          <dt>Name</dt>
+          <dd><%= user.full_name.capitalize %></dd>
+          <dt>Date of Birth</dt>
+          <dd><%= user.dob %></dd>
+          <dt>Gender</dt>
+          <dd><%= user.gender %></dd>
+          <dt>Email</dt>
+          <dd><%= user.email %></dd>
+          <dt>Phone Number</dt>
+          <dd><%= user.phone_number %></dd>
+        </dl>
+      </td>
+      <td>
+        <dl>
+          <dt>Address1</dt>
+          <dd><%= user.address.address1 %></dd>
+          <dt>Address2</dt>
+          <dd><%= user.address.address2 %></dd>
+          <dt>Country</dt>
+          <dd><%= user.address.country %></dd>
+          <dt>State</dt>
+          <dd><%= user.address.state %></dd>
+          <dt>Zip</dt>
+          <dd><%= user.address.zip %></dd>
+        </dl>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+<%= yield %>
+</body>
+</html>

@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    # To increase performance
+    @user = User.preload(:address).find(params[:id])
   end
 
   def new
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to @user
     else
       render 'new'
     end
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :password)
+    params.require(:user).permit(:first_name, :last_name, :gender, :dob, :email, :phone_number, :password)
   end
 
 end

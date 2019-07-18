@@ -8,9 +8,22 @@
       <%= form_for(@user) do |f| %>
         <%= f.text_field :first_name, :placeholder => "First name" %>
         <%= f.text_field :last_name, :placeholder => "Last name" %>
+
+        <%= f.label("Gender:")%>
+        <%= f.radio_button(:gender, "Male")%><%= f.label("Male")%>
+        <%= f.radio_button(:gender, "Female") %><%= f.label("Female")%><br>
+
+        <%= f.label("Date of Birth")%>
+        <%= f.date_field :dob, :placeholder => "Date of Birth" %><br>
+
+        <%= f.label("Contact Details:")%><br>
         <%= f.email_field :email, :placeholder => "Email" %>
-        <%= f.phone_field :phone_number, :placeholder => "Phone Number" %>
+        <%= f.phone_field :phone_number, :placeholder => "Phone number" %><br>
+
+        <%= f.label("Password")%><br>
         <%= f.password_field :password, :placeholder => "Password" %>
+        <br><br>
+
         <%= f.submit "Update", class: "btn-submit" %>
       <% end %>
 
