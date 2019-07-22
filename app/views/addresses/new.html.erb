@@ -23,6 +23,11 @@
 
   <p>
     <%= form.submit %>
+    <%#= link_to "Cancel", user_path(@user) %>
+<!--    <a><button><%#= link_to "Cancel", user_path(@user) %></button></a>-->
+    <button><%= link_to "Cancel", user_path(@user) %></button>
+
   </p>
 <% end %>
 
+<%=button_to "Cancel", user_path(@user), method: :get %>

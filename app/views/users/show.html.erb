@@ -22,15 +22,15 @@
   <h3>Address:</h3>
   <dl>
     <dt>Address1</dt>
-    <dd><%= @user.address.address1 %></dd>
+    <dd><%= @user.address&.address1 %></dd>
     <dt>Address2</dt>
-    <dd><%= @user.address.address2 %></dd>
+    <dd><%= @user.address&.address2 %></dd>
     <dt>Country</dt>
-    <dd><%= @user.address.country %></dd>
+    <dd><%= @user.address&.country %></dd>
     <dt>State</dt>
-    <dd><%= @user.address.state %></dd>
+    <dd><%= @user.address&.state %></dd>
     <dt>Zip</dt>
-    <dd><%= @user.address.zip %></dd>
+    <dd><%= @user.address&.zip %></dd>
   </dl>
 
 <% else %>
@@ -39,6 +39,9 @@
 
 <br>
 <%= link_to 'Update Profile', edit_user_path(@user) %>
+<%#= link_to 'Go back', users_path %>
+<%= link_to 'back', :back%>
+
 
 
 <%#= yield %>

@@ -5,47 +5,35 @@
 </head>
 <p><strong>All User List</strong></p>
 <body>
-  <table border="2", align="center">
+<p><%= link_to 'New User', new_user_path %></p>
+
+  <table align="center">
     <thead>
-    <th>Profile Information</th>
-    <th>Address Details</th>
+    <th>Full Name</th>
+    <th>Date of Birth</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th></th>
     </thead>
     <tbody>
     <% @users.each do |user| %>
     <tr>
       <td>
-        <dl>
-          <dt>Name</dt>
-          <dd><%= user.full_name.capitalize %></dd>
-          <dt>Date of Birth</dt>
-          <dd><%= user.dob %></dd>
-          <dt>Gender</dt>
-          <dd><%= user.gender %></dd>
-          <dt>Email</dt>
-          <dd><%= user.email %></dd>
-          <dt>Phone Number</dt>
-          <dd><%= user.phone_number %></dd>
-        </dl>
+        <%= link_to user.full_name.capitalize, user_path(user) %>
       </td>
+      <td><%= user.dob %></td>
+      <td><%= user.gender %></td>
+      <td><%= user.email %></td>
+      <td><%= user.phone_number %></td>
       <td>
-        <dl>
-          <dt>Address1</dt>
-          <dd><%= user.address.address1 %></dd>
-          <dt>Address2</dt>
-          <dd><%= user.address.address2 %></dd>
-          <dt>Country</dt>
-          <dd><%= user.address.country %></dd>
-          <dt>State</dt>
-          <dd><%= user.address.state %></dd>
-          <dt>Zip</dt>
-          <dd><%= user.address.zip %></dd>
-        </dl>
+        <%= link_to 'Update', edit_user_path(user) %>
+        <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'How dare you to delete this user?' } %>
       </td>
     </tr>
     <% end %>
     </tbody>
   </table>
-
-<%= yield %>
+  <%= yield %>
 </body>
 </html>

@@ -2,9 +2,8 @@ class UsersController < ApplicationController
 
   # refer https://www.javatpoint.com/ruby-on-rails-session
 
-  # before_action :require_user, only: [:index, :show, :new]
-  # before_action :require_user_logout, only: [:create, :new]
-  # before_action :require_user_logout, only: [:new]
+  # before_action :user, except: [:new, :index, :create]
+  before_action :user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
@@ -35,8 +33,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to @user
     else
@@ -44,7 +40,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to users_path
+  end
+
   private
+
+  def user
+    @user = User.find(params[:id])
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :gender, :dob, :email, :phone_number, :password)

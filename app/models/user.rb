@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # refer: https://www.javatpoint.com/ruby-on-rails-session
   # has_secure_password
-  has_one :address
+  has_one :address, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
