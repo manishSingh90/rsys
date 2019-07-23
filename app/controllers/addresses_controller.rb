@@ -13,9 +13,6 @@ class AddressesController < ApplicationController
     # @user = User.find(params[:user_id])
     # use create_address for has_on association
     @address = @user.create_address(address_params)
-
-    binding.pry
-
     redirect_to user_path(@user)
   end
 
